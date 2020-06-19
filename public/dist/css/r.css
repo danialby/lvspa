@@ -1,0 +1,470 @@
+@media (min-width:1800px) {
+    #devmodel {
+        width: 85% !important;
+    }
+}
+@media (min-width:1440px) {
+    #_orderForm {
+        transform: translateY(-75vh);
+        -webkit-transform: translateY(-75vh);
+        -moz-transform: translateY(-75vh);
+        -ms-transform: translateY(-75vh);
+        -o-transform: translateY(-75vh);
+}
+#_orderForm #topz {
+    margin-top: -13vh;
+}
+.basic-layout {
+    font-size: 0.92rem;
+}
+}
+
+
+@media (min-width:1024px) {
+    #contactType {
+        width: 75%;
+    }
+}
+
+
+
+@media (max-width: 1024px) {
+
+    #tehrannum h6,
+    #ahwaznum h6 {
+        display: none;
+    }
+
+    #bottom {
+        padding-right: 45px;
+    }
+
+    #contactType {
+        width: 65%;
+    }
+}
+
+@media(min-width:993px) {
+
+
+    #devmodel {
+        float: right;
+    }
+}
+
+@media(max-width:992px) {
+    #devmodel {
+        top: 5px;
+    }
+    #homeBtns
+    {
+        margin-top:2em;
+    }
+    #adminBox .con-expand-req .con-btns-req {
+        text-align: right;
+    }
+    #bottom p {
+        font-size: 0.72rem;
+    }
+
+
+    #orderForm input,
+    #orderForm textarea,
+    #orderForm select {
+        margin: 0.3vh 0px;
+        width: 60%;
+        right: 15px;
+    }
+
+    .mycard .form-control {
+        width: 80% !important;
+        right: 10px !important;
+        min-width: auto;
+    }
+
+    #orderForm .mylabel {
+        font-size: 0.72em;
+        opacity: 0.9;
+        width: 100px;
+        clear: right;
+        margin: 0;
+    }
+    .theFail {
+        right: 120px;
+        top: -7.5px;
+    }
+
+    .failText {
+        margin-bottom: -1px !important;
+    }
+
+    #navbarSupportedContent ul {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+@media(min-width:768px) {
+    #a-icon {
+        left: 8vh;
+    }
+    #a-logo {
+        left: 10vh;
+    }
+}
+
+@media(max-width:767px) {
+    #ltime {
+        display: none !important;
+    }
+    .aloimg-about {
+        background-position: 85% bottom !important;
+    }
+    .fdiv {
+        padding: 0px !important;
+        margin: 22.5px 0px !important;
+    }
+    #limage {
+        display: none;
+    }
+
+    #nava {
+        left: 0px;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        width: 170px;
+        border-right: 1px solid;
+        padding-right: 0px;
+    }
+
+    li.imenuItem {
+        left: -150px;
+    }
+
+    .imenuItem a {
+        color: #414141;
+    }
+
+    .opened .imenuItem a {
+        margin-right: 0px;
+        color: #414141;
+        font-size: 0.8rem;
+    }
+
+    #navbarSupportedContent {
+        display: block !important;
+    }
+
+    #loadingPanel {
+        width: 85% !important;
+    }
+
+    #codeLabel {
+        width: 45px;
+    }
+
+    #requestcode {
+        right: 15px !important;
+    }
+
+    #orderForm input#sendReq {
+        right: 15px;
+    }
+
+    #orderForm input#reqStat {
+        right: 15px;
+    }
+
+    #contactType {
+        width: 100%;
+    }
+
+    #devmodel {
+        width: 100%;
+        top: 5px;
+    }
+
+    .deviceList {
+        width: 45% !important;
+    }
+
+    #sideBtn {
+        opacity: 1;
+        left: 15px;
+    }
+
+    .opened {
+        width: 200px !important;
+    }
+
+    .opened #nava {
+        width: 200px;
+    }
+
+    /* .opened #aa-logo {
+        margin: 0 auto;
+        background-color: #f7f7f7;
+        background-size: 50%;
+        box-shadow: none;
+        width: 100%;
+} */
+    #aa-icon {
+        width: 40px;
+        height: 40px;
+        margin-top: 0;
+        top: 35px;
+        position: fixed;
+        left: 20px;
+        opacity: 0;
+    }
+
+    .opened #aa-icon {
+        opacity: 1;
+        margin: 0 auto;
+        width: 130px;
+    }
+
+    #aa-logo {
+        position: relative;
+        background-color: #f7f7f7;
+        border-radius: 0px 8px 8px 0px;
+        /* box-shadow: 0px 3px 8px #d0d0d0; */
+        margin-top: 25px;
+        background-position: center;
+        background-size: 65%;
+        width: 80px;
+        height: 45px;
+        margin-right: -100px;
+        float: right;
+    }
+
+    #order {
+        right: 1%;
+    }
+    .mycard .form-control {
+        /* width: 35% !important; */
+        /* text-align: center !important; */
+        right: 0px !important;
+    }
+    .theFail {
+        right: 15px;
+        top: -10px;
+    }
+
+    #left {
+        left: -115px;
+        min-width: auto;
+        height: 100%;
+        background-color: #f7f7f7;
+        padding: 0px 20px;
+        line-height: 24px;
+        width: 170px;
+        box-shadow: -5px 0px 10px -3px #0c0c0c;
+        background-size: cover;
+        background-position: center 50px;
+        background-image: none;
+    }
+
+    #left-bottom {
+        opacity: 0;
+    }
+
+    #orderForm input,
+    #orderForm textarea,
+    #orderForm select {
+        padding: 5px;
+    }
+
+    .opened {
+        left: 0px !important;
+    }
+
+    .nopref {
+        text-indent: 91px;
+    }
+
+    #subjselBox {
+        direction: ltr;
+    }
+
+    #orderForm .mylabel::before {
+        width: 15px;
+        height: 20px;
+        right: -10px;
+        background-size: 12.5px;
+        margin-top: -3px;
+    }
+
+    #orderForm .mylabel {
+        display: block;
+        margin-bottom: 0.5rem;
+        right: 0px;
+        font-size: 0.72em;
+        opacity: 0.9;
+        text-align: right;
+        margin-right: 15px;
+        /* color: #4343438a; */
+    }
+
+    #right {
+        width: 85%;
+        background-color: white;
+    }
+
+    #bottom {
+        padding-right: 0px;
+        width: 75%;
+        margin: 0 auto;
+        right: 0px;
+    }
+
+    #bottom {
+        padding-right: 20px;
+        width: 100%;
+    }
+
+
+    #orderForm input,
+    #orderForm textarea,
+    #orderForm select {
+        margin: 0.3vh 0px;
+        width: 95%;
+        right: 15px;
+        padding: 5px;
+        /* margin-bottom: 2px !important; */
+        /* padding-bottom: 5px !important; */
+        font-size: 16px;
+        top: -10px;
+        text-align: left;
+        z-index: 0;
+    }
+
+    #insta {
+        bottom: 80px;
+        width: 65px;
+        margin: 20px 0px;
+        background: #414141;
+        margin-right: -30px;
+        border-right: none !important;
+        position: absolute;
+        height: 30px;
+    }
+
+    .opened #insta {
+        bottom: 80px;
+        width: 199px !important;
+        margin: 20px 0px;
+        background: #00000059;
+        margin-right: 0px;
+        border-right: none !important;
+        position: absolute;
+        height: 30px;
+        /* box-shadow: -2px 7px 8px 0px #a3a3a345; */
+    }
+
+    li#insta a {
+        font-size: 13px;
+        position: relative;
+        left: -175px;
+        top: -9px;
+        letter-spacing: 0.1rem;
+    }
+
+    .opened li#insta a {
+        color: #ffffff !important;
+        left: 35px;
+    }
+
+    .opened li#insta a::before {
+        left: 5px;
+    }
+
+
+li#insta a::before {
+    border-right: none;
+    content: '';
+    position: fixed;
+    left: 5px;
+    /* border-right: 2px solid #bababa; */
+    margin-top: 0;
+    width: 45px;
+    height: 30px;
+    padding: 0;
+    background-size: 20px;
+}
+}
+
+
+
+@media(max-width:551px) {
+    .mycard .form-control {
+        width: 100% !important;
+        right: 0px !important;
+    }
+    #bottom p {
+        margin-bottom: 0px;
+        font-size: 0.62rem;
+    }
+
+    .addr {
+        font-size: 0.75rem;
+        text-align: justify;
+    }
+
+    .phone {
+        letter-spacing: 4px;
+        font-size: 0.7rem !important;
+    }
+
+    .nopref {
+        text-indent: 83px;
+    }
+}
+
+@media(max-width:375px) {
+    #_orderForm #topz {
+        font-size: 0.72rem;
+    }
+}
+
+
+
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3),
+only screen and (min--moz-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3/1),
+only screen and (min-device-pixel-ratio: 3),
+only screen and (min-resolution: 458dpi),
+only screen and (min-resolution: 3dppx) {
+    /* Retina styles here */
+}
+
+
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx) {
+    /* Retina styles here */
+}
+
+
+
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3),
+only screen and (min--moz-device-pixel-ratio: 3),
+only screen and (-o-min-device-pixel-ratio: 3/1),
+only screen and (min-device-pixel-ratio: 3),
+only screen and (min-resolution: 384dpi),
+only screen and (min-resolution: 3dppx) {
+    /* Retina styles here */
+}

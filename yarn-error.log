@@ -1,0 +1,99 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\dania\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add vue-feahter-icons
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\libnvvp;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Users\dania\AppData\Local\Microsoft\WindowsApps;C:\Users\dania\AppData\Local\GitHubDesktop\bin;C:\Users\dania\AppData\Roaming\npm;C:\Users\dania\AppData\Local\atom\bin;C:\adb;C:\Bitnami\wampstack-7.2.26-0\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;F:\DannyF\AndroidSDK;C:\Python27;E:\HashiCorp\Vagrant\bin;C:\Program Files\nodejs\;C:\Users\dania\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\dania\AppData\Local\Programs\Python\Python37\;C:\Bitnami\wampstack-7.2.26-0\php\php.exe;C:\Bitnami\wampstack-7.2.26-0\apache2\htdocs\flutter\bin;E:\Program Files\JetBrains\PyCharm 2019.3.3\bin
+
+Yarn version: 
+  1.22.0
+
+Node version: 
+  12.17.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/vue-feahter-icons: Not found
+      at Request.params.callback [as _callback] (C:\Users\dania\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66975:18)
+      at Request.self.callback (C:\Users\dania\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140727:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (C:\Users\dania\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141699:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (C:\Users\dania\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141621:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1221:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+
+npm manifest: 
+  {
+    "private": true,
+    "scripts": {
+      "dev": "npm run development",
+      "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "watch": "npm run development -- --watch",
+      "watch-poll": "npm run watch -- --watch-poll",
+      "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "prod": "npm run production",
+      "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "lint": "eslint --fix --ext .js,.vue resources/js"
+    },
+    "dependencies": {
+      "@bytegem/vue-heroicons": "^0.3.2",
+      "@fortawesome/fontawesome-svg-core": "^1.2.17",
+      "@fortawesome/free-brands-svg-icons": "^5.8.1",
+      "@fortawesome/free-regular-svg-icons": "^5.8.1",
+      "@fortawesome/free-solid-svg-icons": "^5.8.1",
+      "@fortawesome/vue-fontawesome": "^0.1.6",
+      "axios": "^0.18.1",
+      "bootstrap": "^4.3.1",
+      "caniuse-lite": "^1.0.30001066",
+      "fontawesome": "^5.6.3",
+      "jquery": "^3.5.1",
+      "js-cookie": "^2.2.0",
+      "persianjs": "^0.4.0",
+      "popper.js": "^1.15.0",
+      "sweetalert2": "^8.10.0",
+      "vform": "^1.0.0",
+      "vue": "^2.6.10",
+      "vue-i18n": "^8.11.2",
+      "vue-loaders": "^4.0.0-alpha.2",
+      "vue-meta": "^1.6.0",
+      "vue-persian-datetime-picker": "^2.1.5",
+      "vue-router": "^3.0.6",
+      "vuelidate": "^0.7.5",
+      "vuesax": "^3.11.15",
+      "vuex": "^3.1.0",
+      "vuex-router-sync": "^5.0.0",
+      "yarn": "^1.22.4"
+    },
+    "devDependencies": {
+      "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+      "@babel/preset-env": "^7.4.4",
+      "babel-eslint": "^10.0.1",
+      "browser-sync": "^2.26.7",
+      "browser-sync-webpack-plugin": "^2.0.1",
+      "cross-env": "^5.2.0",
+      "eslint": "^5.16.0",
+      "eslint-config-standard": "^12.0.0",
+      "eslint-plugin-import": "^2.17.2",
+      "eslint-plugin-node": "^9.0.1",
+      "eslint-plugin-promise": "^4.1.1",
+      "eslint-plugin-standard": "^4.0.0",
+      "eslint-plugin-vue": "^5.2.2",
+      "laravel-mix": "^4.0.15",
+      "laravel-mix-versionhash": "^1.0.7",
+      "resolve-url-loader": "^2.3.1",
+      "sass": "^1.26.5",
+      "sass-loader": "^7.1.0",
+      "vue-template-compiler": "^2.6.10",
+      "webpack-bundle-analyzer": "^3.3.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
