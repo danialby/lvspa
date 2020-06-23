@@ -20,6 +20,7 @@ class AdminController extends Controller
     public function RemoveReq($id)
     {
         irequests::where('id', $id)->delete();
+        DB::statement('ALTER TABLE irequests AUTO_INCREMENT = 1;');
     }
     public function Smsed($reqCode,$MobileNumber)
     {

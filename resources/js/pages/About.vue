@@ -5,7 +5,7 @@
         الو اپل<br>
         مرکز تخصصی فروش و تعمیر<br>
         محصولات اپل<br>
-        <vs-button id="scrlBtn" v-scroll-to="{el: '#topdiv', offset: 475}" type="relief" radius color="dark" icon="arrow_downward" />
+        <vs-button id="scrlBtn" type="relief" radius color="dark" icon="arrow_downward" />
       </p>
     </vs-col>
     <vs-divider id="topdiv" position="left" background="whitesmoke" color="black" class="fdiv">
@@ -18,11 +18,11 @@
       </vs-col>
       <vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-sm="11" vs-xs="11" vs-md="4" vs-lg="4">
         <vs-col vs-justify="center" vs-align="center" vs-sm="12" vs-xs="12" vs-md="9" vs-lg="9">
-          <check-circle-icon /> تهيه ی محصولات اصلی اپل<br>
-          <check-circle-icon /> لوازم جانبی<br>
-          <check-circle-icon /> خدمات نرم افزاری<br>
-          <check-circle-icon /> خدمات سخت افزاری<br>
-          <check-circle-icon /> مشاوره فروش<br>
+          <vs-icon icon="done" /> تهيه ی محصولات اصلی اپل<br>
+          <vs-icon icon="done" /> لوازم جانبی<br>
+          <vs-icon icon="done" /> خدمات نرم افزاری<br>
+          <vs-icon icon="done" /> خدمات سخت افزاری<br>
+          <vs-icon icon="done" /> مشاوره فروش<br>
           بصورت حضوری و غير حضوری می باشد.
         </vs-col>
       </vs-col>
@@ -60,7 +60,7 @@
           </p>
           <p class="addr">
             <strong>کیانپارس</strong> - نبش خ ۳ شرقی - جنب بازار مرکزی
-          </p><p  class="phone nopref">
+          </p><p class="phone nopref">
             33920043-4
           </p>
           <p class="addr">
@@ -72,35 +72,23 @@
       </vs-col>
     </vs-row>
   </div>
-  <!-- <div id="aboutPart">
-
-  </div> -->
 </template>
 
 <script>
-import { CheckCircleIcon } from 'vue-feather-icons'
-import Vue from 'vue'
-import vscroll from 'vue-scrollto'
-Vue.use(vscroll)
 export default {
   name: 'About',
-  components: {
-    CheckCircleIcon
-  },
   data () {
     return {
       aloimg: 'aloimg-about'
     }
   },
-  layout: 'basic',
-  mounted () {
-    // this.$vs.loading.close()
-  }
+  layout: 'basic'
 }
 </script>
 
     <style scoped>
     #AboutUs-text svg {
-                        width: 20px;
+         width: 20px;
     }
+    /* //  v-scroll-to="{el: '#topdiv', offset: 475}" */
     </style>

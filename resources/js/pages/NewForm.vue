@@ -7,10 +7,34 @@
         شما ميتوانيد از طريق فرم درخواست سوالات خود را بپرسيد، تا كارشناسان ما در كوتاه ترين زمان ممكن پاسخگوی شما از هركجای كشور عزيزمان ايران باشند.
       </p>
     </vs-col>
-    <vs-divider id="topdiv" position="left" background="whitesmoke" color="black" class="fdiv">
-      <vs-icon icon="subject" />
-      <span class="spTitle">{{ $t('Request') }}</span>
-    </vs-divider>
+    <vs-row>
+      <vs-collapse>
+        <vs-collapse-item>
+          <div slot="header">
+            <vs-row id="devRow" vs-type="flex" vs-align="center" vs-justify="space-around">
+              <vs-col vs-w="2">
+                <vs-image :src="'dist/css/img/icon/appleIcons/homepage_productnav_iphone_2x.png'" />
+              </vs-col>
+              <vs-col vs-w="2">
+                <vs-image :src="'dist/css/img/icon/appleIcons/homepage_productnav_ipad_2x.png'" />
+              </vs-col>
+              <vs-col vs-w="2">
+                <vs-image :src="'dist/css/img/icon/appleIcons/homepage_productnav_apple_watch_2x.png'" />
+              </vs-col>
+              <vs-col vs-w="2">
+                <vs-image :src="'dist/css/img/icon/appleIcons/homepage_productnav_imac_2x.png'" />
+              </vs-col>
+              <vs-col vs-w="2">
+                <vs-image :src="'dist/css/img/icon/appleIcons/homepage_productdrawer_airpods_2x.png'" />
+              </vs-col>
+            </vs-row>
+          </div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus eros tortor, non fringilla lectus cursus et. Fusce vel nisi ante. Aliquam sit amet lectus pharetra, luctus mi sed, aliquet felis. Mauris a tortor viverra, ornare tellus in, consectetur leo.
+          <br><br>
+          Etiam nec nunc nec nisl luctus tincidunt efficitur vitae elit. Vestibulum iaculis nibh commodo neque ultrices lobortis. Cras magna massa, pretium vitae mattis varius, pharetra nec massa. Aliquam ac ex enim. Quisque consequat dui libero, vel blandit lorem porttitor sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam sed lobortis nisl, quis eleifend metus.
+        </vs-collapse-item>
+      </vs-collapse>
+    </vs-row>
     <form id="requestForm">
       <vs-row vs-w="12" class="reqRow">
         <vs-col vs-lg="4" vs-md="3" vs-sm="6" vs-xs="11">
@@ -28,7 +52,7 @@
             type="line"
             :disabled="coded"
           >
-            <vs-select-item v-for="item,index in reqOptions" :key="index" :value="item.value" :text="item.text" />
+            <vs-select-item v-for="req in reqOptions" :key="req.value" :value="req.value" :text="req.text" />
           </vs-select>
           <vs-divider position="left" background="whitesmoke" color="black">
             <vs-icon icon="person_outline" />
@@ -258,7 +282,7 @@
                      color="primary"
                      class="vs-con-loading__container"
                      vslor="dark"
-                     :disabled="codeBox.length < 4"
+                     :disabled="codeBox.length < 4 || formSent"
                      @click="codeCheck()"
           >
             ارسال
@@ -301,6 +325,7 @@
         title="ثبت درخواست"
         class="text-right"
         @cancel="forceReset()"
+        @close="forceReset()"
       >
         درخواست شما با موفقیت ثبت شد
       </vs-prompt>
@@ -344,6 +369,7 @@ export default {
       coded: false,
       formSentable: false,
       nopeCode: false,
+      formSent: false,
       // uploadedFiles: [],
       fullV: '',
       mobileV: '',
@@ -442,19 +468,17 @@ export default {
       aloimg: 'aloimg-request',
       csrf: document
         .querySelector('meta[name="csrf-token"]')
-        .getAttribute('content'),
-      reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
+        .getAttribute('content')
+    //   reg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
       // mobreg: /^09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}$/
     }
   },
   watch: {
     selectedType () {
       this.modelOptions = this.devType[this.selectedType - 1].options
-      this.modelKey += 1
     }
   },
   mounted () {
-    // this.$vs.loading.close()
   },
   methods: {
     opensmsLoading () {
@@ -499,13 +523,6 @@ export default {
           this.nopeCode = true
         }
       }
-
-      // $('#checkmark').toggleClass('dspl-n')
-      // $('#requestcode').prop('disabled', true)
-      // $('#requestcode').removeClass('dsbld')
-      // $('#sendReq').prop('disabled', false)
-      // $('#sendReq').removeClass('dsbld')
-      // $('#sendReq').addClass('pop')
     },
     validate () {
       if (this.fullV.length < 3) { this.fNeeded = true } else { this.fNeeded = false }
@@ -594,7 +611,10 @@ export default {
         // bodyFormData.append('fileNames', ufiles)
         axios
           .post('/AjaxSend', bodyFormData)
-          .then(res => (this.reqSuccPrompt = true))
+          .then(res => {
+            this.formSent = true
+            this.reqSuccPrompt = true
+          })
           .catch(res => (this.reqErrPrompt = true))
       }
     },
@@ -610,7 +630,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .reqRow
 {
       margin: 25px 0px;

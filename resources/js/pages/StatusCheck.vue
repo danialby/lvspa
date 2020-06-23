@@ -9,30 +9,31 @@
             vs-xs="10"
             class="text-center text-white mrg-0a"
     >
-      <h3>پیگیری درخواست</h3>
-      <p>
+      <h2>پیگیری درخواست</h2>
+      <h5>
         مشاهده آخرين وضعيت درخواست
-      </p>
+      </h5>
       <vs-row id="statCoda" class="mrg-0a justify-content-center align-items-center">
         <vs-col id="codaBox">
           <vs-input
             v-if="(coded && !mobed) || (!coded && !mobed)"
-            id="reqInput eng"
+            id="reqInput"
             v-model="statReqCode"
             :readonly="coded === true"
             name="reqCode"
             label-placeholder="کد درخواست"
-            class="text-center"
+            class="text-center eng"
+            :class="{'req-rad': coded}"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
             maxlength="5"
-            color="dark"
+            color="light"
           />
           <vs-button v-if="!coded"
                      id="statSMS"
                      ref="statloadableButton"
-                     color="light"
+                     color="dark"
                      type="flat"
                      icon="arrow_forward"
                      class="arrr vs-con-loading__container"
@@ -41,7 +42,7 @@
           />
           <vs-button v-if="coded && !mobed"
                      id="editreqCode"
-                     color="light"
+                     color="dark"
                      type="flat"
                      icon="edit"
                      class="arrr vs-con-loading__container"
@@ -54,6 +55,7 @@
             name="mobile"
             autofocus="true"
             class="text-center eng"
+            :class="{'code-rad': coded}"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
@@ -66,12 +68,55 @@
             v-if="coded && shows === 0"
             ref="statloadableButton"
             class="arrrr vs-con-loading__container"
-            color="light"
+            color="dark"
             type="flat"
             icon="arrow_forward"
             :disabled="codeStat.length < 4"
             @click="codeCheck()"
           />
+          <vs-button
+            v-if="shows === 0"
+            id="forgotBtn"
+            color="light"
+            type="line"
+            @click="recPrompt = true"
+          >
+            کد درخواست فراموش شده؟
+          </vs-button>
+          <vs-popup
+            :active.sync="recPrompt"
+            title="بازیابی کد درخواست"
+            type="primary"
+          >
+            <span id="recoDesc" :class="{'warn':recWrong}">با وارد كردن شماره موبایل خود٬ شماره درخواست را به صورت پیامک دریافت می کنید
+              <vs-input
+                id="mobInp"
+                v-model="recoMobInp"
+                autofocus="true"
+                class="text-center eng recoInp"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                icon-after="true"
+                icon="dialpad"
+                color="dark"
+                :description-text="recDesc"
+                :description="recCoded || recWrong"
+              />
+              <vs-col class="text-center">
+                <vs-button
+                  id="forgotyBtn"
+                  v-model="forgotyBtn"
+                  color="primary"
+                  type="relief"
+                  :disabled="recCoded"
+                  @click="forgoty()"
+                >
+                  ارسال
+                </vs-button>
+              </vs-col>
+            </span>
+          </vs-popup>
         </vs-col>
       </vs-row>
     </vs-col>
@@ -181,11 +226,18 @@ export default {
   layout: 'basic',
   data () {
     return {
+      recPrompt: false,
+      recoMobInp: '',
+      recDesc: '',
+      recDanger: '',
+      recWrong: false,
+      forgotyBtn: '',
       componentKey: 0,
       coded: false,
       mobed: false,
       statReqCode: '',
       codeStat: '',
+      recCoded: false,
       shows: 0,
       showClass: 0,
       codedesc: '',
@@ -231,6 +283,35 @@ export default {
           this.$vs.loading.close(this.$refs.statloadableButton.$el)
         })
     },
+    forgoty () {
+      if (this.recoMobInp === '' || this.recoMobInp.length <= 10) {
+        this.recDesc = 'شماره موبایل معتبر نیست'
+        this.recWrong = true
+        this.recCoded = false
+      } else {
+        this.openrecLoading()
+        let vs = this.$vs
+        let vm = this
+        axios
+          .post('/forgotCode/' + vm.recoMobInp)
+          .then(res => {
+            vs.loading.close(vm.forgotyBtn)
+            this.recWrong = false
+            this.recDesc = 'کد درخواست ارسال شد'
+            this.recCoded = true
+            setTimeout(() => {
+              this.recPrompt = false
+            }, 3000)
+          })
+          .catch(error => {
+            vs.loading.close(vm.forgotyBtn)
+            this.recWrong = true
+            this.recCoded = false
+            this.recDesc = 'درخواستی برای این شماره موبایل موجود نیست'
+            console.log(error)
+          })
+      }
+    },
     getCookie (cname) {
       var name = cname + '='
       var decodedCookie = decodeURIComponent(document.cookie)
@@ -270,9 +351,10 @@ export default {
           document.getElementById('basicLayout').classList.remove('align-items-center')
           document.getElementById('basicLayout').classList.add('align-items-end')
         })
-        .catch(res => {
+        .catch(err => {
           this.Alert('danger', 'کد اشتباه', 'کد وارد شده اشتباه است')
           this.$vs.loading.close(this.$refs.statloadableButton.$el)
+          console.log(err)
         })
     },
     Alert (color, title, text) {
@@ -291,6 +373,9 @@ export default {
       this.mobed = false
       this.statReqCode = ''
       this.codeStat = ''
+      this.recoMobInp = ''
+      this.recCoded = false
+      this.recWrong = false
       document.getElementById('basicLayout').classList.add('align-items-center')
       document.getElementById('basicLayout').classList.remove('align-items-end')
       this.componentKey += 1
@@ -300,6 +385,14 @@ export default {
         background: '',
         color: 'black',
         container: this.$refs.statloadableButton.$el,
+        scale: 0.45
+      })
+    },
+    openrecLoading () {
+      this.$vs.loading({
+        background: '',
+        color: 'black',
+        container: this.forgotyBtn,
         scale: 0.45
       })
     }
@@ -312,21 +405,27 @@ export default {
   font-weight: 500;
   font-family: '';
 }
-.arrr{
-position: relative;
-    top: -39.5px;
+.arrr {
+    position: relative;
+    top: -42px;
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+    height: 42px !important;
+    width: 42px !important;
 }
-.arrrr{
-position: relative;
-    top: -59.5px;
+.arrrr {
+    position: relative;
+    top: -67.5px;
+    height: 42px !important;
+    width: 42px !important;
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
 .isFocus label
 {
   color:whitesmoke !important;
+      height: 42px !important;
+    width: 42px !important;
 }
 #impoRow
 {

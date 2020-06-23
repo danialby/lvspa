@@ -1,8 +1,13 @@
+const webpack = require('webpack') // to access built-in plugins
 const path = require('path')
 const fs = require('fs-extra')
 const mix = require('laravel-mix')
 require('laravel-mix-versionhash')
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const {
+  CleanWebpackPlugin
+} = require('clean-webpack-plugin')
+
 mix
   .js('resources/js/app.js', 'public/dist/js')
   .sass('resources/sass/app.scss', 'public/dist/css')
@@ -15,17 +20,13 @@ if (mix.inProduction()) {
     // .version() // Use `laravel-mix-versionhash` for the generating correct Laravel Mix manifest file.
     .versionHash()
 } else {
+
   mix.sourceMaps()
 }
-mix.options({
-  hmrOptions: {
-    host: 'localhost',
-    port: '8008'
-  }
-})
 mix.webpackConfig({
   plugins: [
-    // new BundleAnalyzerPlugin()
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin()
   ],
   resolve: {
     extensions: ['.js', '.json', '.vue'],
@@ -54,4 +55,3 @@ function publishAseets () {
   fs.copySync(path.join(publicDir, 'build', 'dist'), path.join(publicDir, 'dist'))
   fs.removeSync(path.join(publicDir, 'build'))
 }
-

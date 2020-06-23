@@ -17,6 +17,7 @@ Route::post('/AjaxSend', 'AjaxController@ajaxRequestPost');
 // Route::post('/UploadImg', 'AjaxController@uploadImg');
 Route::get('/StatInit/{reqCode}','StatusController@statInit');
 Route::post('/StatCodeGet/{reqID}/{uCode}','StatusController@codeGet');
+Route::post('/forgotCode/{mob}','StatusController@forgotCode');
 Route::get('/reqInit/{mob}','AloController@reqinit');
 // Route::get('/Admin', 'AdminController@index');
 Route::get('/fetchData','AdminController@fetchData');

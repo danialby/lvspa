@@ -279,11 +279,11 @@ export default {
       axios.get('/CheckRegistered/' + this.reqCode)
         .then(res => {
           ir = res.data.isRegistered
-          if (ir === '1' && iR === 0) {
+          if (ir === 1 && iR === 0) {
             return true
-          } else if (ir === '1' && iR === 1) {
+          } else if (ir === 1 && iR === 1) {
             return false
-          } else if (ir === '0' && iR === 0) {
+          } else if (ir === 0 && iR === 0) {
             return true
           }
         })
@@ -328,7 +328,11 @@ export default {
           this.Alert('primary', 'حذف درخواست', 'حذف درخواست انجام شد')
           this.read()
         })
-        .catch(err => console.error(err))
+        .catch(err => {
+          this.Alert('error', 'خطا', 'مشکلی پیش آمده')
+          console.error(err)
+        }
+        )
     },
     editdgfill (reqC, reqstat, det, reqReply, id, mobile, isReg) {
       this.editPrompt = true
@@ -338,13 +342,13 @@ export default {
       this.reqReply = reqReply
       this.details = det
       this.mobile = mobile
-      this.isReg = isReg
+      this.isReg = Number(isReg)
       if (this.isReg === 1) {
-        this.registered = '1'
+        this.registered = 1
       }
     },
     UpdateReq () {
-      if (this.registered === '0') {
+      if (this.registered === 0) {
         if (this.isReg === 0) {
           axios
             .get(
@@ -364,9 +368,13 @@ export default {
               this.sendsms(this.mobile, this.reqCode)
               this.read()
             })
-            .catch(res => this.Alert('error', 'خطا', 'مشکلی پیش آمده'))
+            .catch(err => {
+              this.Alert('error', 'خطا', 'مشکلی پیش آمده')
+              console.error(err)
+            }
+            )
         }
-      } else if (this.registered === '1') {
+      } else if (this.registered === 1) {
         if (this.isReg === 1) {
           axios
             .get(
@@ -385,7 +393,10 @@ export default {
               this.Alert('success', 'ثبت موفق', 'ویرایش درخواست انجام شد.')
               this.read()
             })
-            .catch(res => this.Alert('error', 'خطا', 'مشکلی پیش آمده'))
+            .catch(err => {
+              this.Alert('error', 'خطا', 'مشکلی پیش آمده')
+              console.error(err)
+            })
         }
         // else {
         //   this.Alert("danger", "خطا", "شماره درخواست وارد شده تکراری است");
@@ -413,7 +424,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
   .con-vs-dialog .vs-dialog
     {
       text-align: right !important;
